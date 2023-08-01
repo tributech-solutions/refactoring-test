@@ -1,10 +1,11 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using LegacyApp.Models;
 
-namespace LegacyApp
+namespace LegacyApp.Repositories
 {
-    public class ClientRepository
+    public class ClientRepository : IClientRepository
     {
         public Client GetById(int id)
         {
@@ -20,9 +21,9 @@ namespace LegacyApp
                     CommandText = "uspGetClientById"
                 };
 
-                var parametr = new SqlParameter("@clientId", SqlDbType.Int) { Value = id };
-                command.Parameters.Add(parametr);
-                
+                var parameter = new SqlParameter("@clientId", SqlDbType.Int) { Value = id };
+                command.Parameters.Add(parameter);
+
                 connection.Open();
                 var reader = command.ExecuteReader(CommandBehavior.CloseConnection);
                 while (reader.Read())
@@ -31,12 +32,16 @@ namespace LegacyApp
                     {
                         Id = int.Parse(reader["ClientId"].ToString()),
                         Name = reader["Name"].ToString(),
-                        ClientStatus = (ClientStatus) int.Parse(reader["ClientStatus"].ToString())
                     };
                 }
             }
 
             return client;
         }
+    }
+
+    public interface IClientRepository
+    {
+        Client GetById(int id);
     }
 }

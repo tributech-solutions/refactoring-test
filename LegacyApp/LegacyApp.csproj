@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-      <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-      <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
+        <PackageReference Include="EmailValidation" Version="1.0.9"/>
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0"/>
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.2"/>
+        <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1"/>
     </ItemGroup>
+
+
 
 </Project>
